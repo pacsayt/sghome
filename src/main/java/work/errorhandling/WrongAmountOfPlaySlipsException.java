@@ -4,6 +4,6 @@ public class WrongAmountOfPlaySlipsException extends Exception
 {
   public WrongAmountOfPlaySlipsException( String iniExceptionText)
   {
-    super( iniExceptionText); // Throwable::getMessage()
+    super( iniExceptionText);
   }
 }

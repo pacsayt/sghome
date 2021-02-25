@@ -4,6 +4,6 @@ public class WrongQuickTipAlgorithmNoException extends Exception
 {
   public WrongQuickTipAlgorithmNoException( String iniExceptionText)
   {
-    super( iniExceptionText); // Throwable::getMessage()
+    super( iniExceptionText);
   }
 }

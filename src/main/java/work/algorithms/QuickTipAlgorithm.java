@@ -24,13 +24,14 @@ public class QuickTipAlgorithm
     {
       String onePanel = new Random().ints(1, quickTipAlgorithmARNConfig.getUpperLimit())
                                     .limit( quickTipAlgorithmARNConfig.getAmountOfRandomNumbers())
+                                    .sorted()
                                     .mapToObj( Integer::toString)
                                     .collect( Collectors.joining(", "));
 
       panels.add( onePanel);
     }
 
-    String oneSlip = panels.stream().collect( Collectors.joining( ",", "[","]"));
+    String oneSlip = panels.stream().collect( Collectors.joining( "] , [", "[[","]]"));
 
     System.out.println( oneSlip);
   }
