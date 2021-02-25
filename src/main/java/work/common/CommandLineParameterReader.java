@@ -1,5 +1,6 @@
 package work.common;
 
+import work.algorithms.CommandLineparameters;
 import work.errorhandling.WrongAmountOfParametersException;
 import work.errorhandling.WrongAmountOfPlaySlipsException;
 import work.errorhandling.WrongQuickTipAlgorithmNoException;
@@ -11,11 +12,11 @@ public class CommandLineParameterReader
   private static int AMOUNT_OF_PLAY_SLIPS_IDX = 0;
   private static int AMOUNT_OF_QUICK_TIP_ALGORITHM_NO_IDX = 1;
 
-  private int amountOfPlaySlips;
-  private int quickTipAlgorithmNo;
-
-  public void readCommandLineParameters( String[] commandLineParameters) throws WrongAmountOfPlaySlipsException, WrongQuickTipAlgorithmNoException, WrongAmountOfParametersException
+  public CommandLineparameters readCommandLineParameters(String[] commandLineParameters) throws WrongAmountOfPlaySlipsException, WrongQuickTipAlgorithmNoException, WrongAmountOfParametersException
   {
+    int amountOfPlaySlips;
+    int quickTipAlgorithmNo;
+
     if ( commandLineParameters.length != 2 )
     {
       throw new WrongAmountOfParametersException( "Wrong amount of parameters.");
@@ -38,15 +39,7 @@ public class CommandLineParameterReader
     {
       throw new WrongQuickTipAlgorithmNoException( numberFormatException.getMessage());
     }
-  }
 
-  public int getAmountOfPlaySlips()
-  {
-    return amountOfPlaySlips;
-  }
-
-  public int getQuickTipAlgorithmNo()
-  {
-    return quickTipAlgorithmNo;
+    return new CommandLineparameters( amountOfPlaySlips, quickTipAlgorithmNo);
   }
 }

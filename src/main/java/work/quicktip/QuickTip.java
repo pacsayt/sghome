@@ -1,6 +1,9 @@
 package work.quicktip;
 
 import org.xml.sax.SAXException;
+import work.algorithms.AlgorithmFactory;
+import work.algorithms.CommandLineparameters;
+import work.algorithms.QuickTipAlgorithm;
 import work.common.CommandLineParameterReader;
 import work.config.ConfigReader;
 import work.errorhandling.WrongAmountOfParametersException;
@@ -18,23 +21,23 @@ import javax.inject.Inject;
 public class QuickTip
 {
   private CommandLineParameterReader commandLineParameterReader;
-  private ConfigReader configReader;
+  private AlgorithmFactory algorithmFactory;
 
   @Inject
-  public QuickTip( CommandLineParameterReader iniCommandLineParameterReader, ConfigReader iniConfigReader)
+  public QuickTip( CommandLineParameterReader iniCommandLineParameterReader, AlgorithmFactory iniAlgorithmFactory)
   {
     commandLineParameterReader = iniCommandLineParameterReader;
-    configReader = iniConfigReader;
+    algorithmFactory = iniAlgorithmFactory;
   }
 
   public void run( String[] args)
   {
     try
     {
-      commandLineParameterReader.readCommandLineParameters( args);
+      CommandLineparameters commandLineparameters = commandLineParameterReader.readCommandLineParameters( args);
 
-      configReader.readConfiguration();
-
+      producePlaySlip(  algorithmFactory.getAlgorithm( commandLineparameters.getQuickTipAlgorithmNo()),
+                        commandLineparameters);
     }
     catch ( WrongAmountOfPlaySlipsException wrongAmountOfPlaySlipsException )
     {
@@ -50,6 +53,15 @@ public class QuickTip
     } catch ( SAXException e )
     {
       e.printStackTrace();
+    }
+  }
+
+  private void producePlaySlip(  QuickTipAlgorithm quickTipAlgorithm, CommandLineparameters commandLineparameters)
+  {
+    for ( int playSlipNo = 1 ; playSlipNo <= commandLineparameters.getAmountOfPlaySlips() ; playSlipNo++)
+    {
+      System.out.println( "Play slip #" + playSlipNo);
+      quickTipAlgorithm.generatePlaySlip();
     }
   }
 
