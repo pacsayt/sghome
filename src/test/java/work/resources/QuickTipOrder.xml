@@ -2,15 +2,16 @@
 
 <!-- https://stackoverflow.com/questions/34202967/xmlns-xmlnsxsi-xsischemalocation-and-targetnamespace/34204799 -->
 <!-- xsi:schemaLocation="https://www.gshomework.com/xml QuickTip.xsd"> -->
-<quickTips xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <quickTipAlgorithmUL>
-    <amountRandomNumbers>5</amountRandomNumbers>
-    <upperLimit>90</upperLimit>
-  </quickTipAlgorithmUL>
+<quickTips xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="../../../../main/resources/QuickTip.xsd">
   <quickTipAlgorithmAP>
     <amountRandomNumbers>5</amountRandomNumbers>
     <amountOfPanels>3</amountOfPanels>
   </quickTipAlgorithmAP>
+  <quickTipAlgorithmUL>
+    <amountRandomNumbers>5</amountRandomNumbers>
+    <upperLimit>90</upperLimit>
+  </quickTipAlgorithmUL>
   <quickTipAlgorithmULAP>
     <amountRandomNumbers>5</amountRandomNumbers>
     <upperLimit>90</upperLimit>

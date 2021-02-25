@@ -1,48 +1,56 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
+  <xs:complexType name="abstractQuickTipAlgorithmARN">
+    <xs:sequence>
+      <xs:element name="amountRandomNumbers" type="xs:positiveInteger"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="quickTipAlgorithmULType">
+    <xs:complexContent>
+      <xs:extension base="abstractQuickTipAlgorithmARN">
+        <xs:sequence>
+          <xs:element name="upperLimit" type="xs:positiveInteger"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="quickTipAlgorithmAPType">
+    <xs:complexContent>
+      <xs:extension base="abstractQuickTipAlgorithmARN">
+        <xs:sequence>
+          <xs:element name="amountOfPanels" type="xs:positiveInteger"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+    <xs:complexType name="quickTipAlgorithmULAPType">
+      <xs:complexContent>
+        <xs:extension base="abstractQuickTipAlgorithmARN">
+          <xs:sequence>
+            <xs:element name="upperLimit" type="xs:positiveInteger"/>
+            <xs:element name="amountOfPanels" type="xs:positiveInteger"/>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+
   <xs:element name="quickTips">
-    <xs:complexType>
-      <xs:all>
-        <xs:element name="abstractQuickTipAlgorithmARN">
-          <xs:complexType>
-            <xs:all>
-              <xs:element name="amountRandomNumbers" type="xs:positiveInteger"/>
-            </xs:all>
-          </xs:complexType>
-        </xs:element>
+    <xs:complexType mixed="true">
+      <xs:sequence>
 
-        <xs:element name="quickTipAlgorithmUL">
-          <xs:complexType>
-            <xs:all>
-              <xs:extension base="abstractQuickTipAlgorithmARN">
-                <xs:element name="upperLimit" type="xs:amountOfPanels"/>
-              </xs:extension>
-            </xs:all>
-          </xs:complexType>
-        </xs:element>
+        <xs:element name="quickTipAlgorithmUL" type="quickTipAlgorithmULType"/>
 
-        <xs:element name="quickTipAlgorithmAP">
-          <xs:complexType>
-            <xs:all>
-              <xs:extension base="abstractQuickTipAlgorithmARN">
-                <xs:element name="amountOfPanels" type="xs:positiveInteger"/>
-              </xs:extension>
-            </xs:all>
-          </xs:complexType>
-        </xs:element>
+        <xs:element name="quickTipAlgorithmAP" type="quickTipAlgorithmAPType"/>
 
-        <xs:element name="quickTipAlgorithmULAP">
-          <xs:complexType>
-            <xs:all>
-              <xs:extension base="abstractQuickTipAlgorithmARN">
-                <xs:element name="upperLimit" type="xs:positiveInteger"/>
-                <xs:element name="amountOfPanels" type="xs:positiveInteger"/>
-              </xs:extension>
-            </xs:all>
-          </xs:complexType>
-        </xs:element>
-      </xs:all>
+        <xs:element name="quickTipAlgorithmULAP" type="quickTipAlgorithmULAPType"/>
+
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
+
+
 </xs:schema>
