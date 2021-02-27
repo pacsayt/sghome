@@ -23,6 +23,7 @@ public class QuickTipAlgorithm
     for ( int i = 0; i < quickTipAlgorithmARNConfig.getAmountOfPanels() ; i++ )
     {
       String onePanel = new Random().ints(1, quickTipAlgorithmARNConfig.getUpperLimit())
+                                    .distinct()
                                     .limit( quickTipAlgorithmARNConfig.getAmountOfRandomNumbers())
                                     .sorted()
                                     .mapToObj( Integer::toString)
