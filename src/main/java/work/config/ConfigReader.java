@@ -97,9 +97,8 @@ public class ConfigReader
 
       document = localDocument;
 
-      NodeList nodeList = document.getElementsByTagName( "quickTipAlgorithmULAP");
-
-      printNodeList( nodeList);
+//      NodeList nodeList = document.getElementsByTagName( "quickTipAlgorithmULAP");
+//      printNodeList( nodeList);
     }
     catch ( IOException ioException)
     {

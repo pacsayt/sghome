@@ -16,7 +16,7 @@ public class QuickTipAlgorithm
     quickTipAlgorithmARNConfig = iniQuickTipAlgorithmARNConfig;
   }
 
-  public void generatePlaySlip()
+  public String generatePlaySlip()
   {
     List<String > panels = new ArrayList<>();
 
@@ -34,6 +34,6 @@ public class QuickTipAlgorithm
 
     String oneSlip = panels.stream().collect( Collectors.joining( "] , [", "[[","]]"));
 
-    System.out.println( oneSlip);
+    return oneSlip;
   }
 }

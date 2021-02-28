@@ -61,7 +61,7 @@ public class QuickTip
     for ( int playSlipNo = 1 ; playSlipNo <= commandLineparameters.getAmountOfPlaySlips() ; playSlipNo++)
     {
       System.out.println( "Play slip #" + playSlipNo);
-      quickTipAlgorithm.generatePlaySlip();
+      System.out.println( quickTipAlgorithm.generatePlaySlip());
     }
   }
 
